@@ -38,8 +38,11 @@ src/main/java/co/edu/sena/auth/
 ## Cómo ejecutarlo
 
 1. Tener instalados **Java 17+**, **Maven** (o IntelliJ/VS Code) y **MySQL**.
-2. Configurar el usuario y la contraseña de MySQL en `src/main/resources/application.properties`
-   (por defecto usuario `root`; la contraseña se lee de la variable de entorno `DB_PASSWORD`).
+2. 2. Crear la base de datos y un usuario de MySQL para el servicio:
+   CREATE DATABASE IF NOT EXISTS auth_db;
+   CREATE USER IF NOT EXISTS 'auth_user'@'localhost' IDENTIFIED BY 'TU_CONTRASENA';
+   GRANT ALL PRIVILEGES ON auth_db.* TO 'auth_user'@'localhost';
+   Luego definir la variable de entorno DB_PASSWORD con esa contraseña.
 3. Ejecutar la clase `AuthApplication` (botón Run) o `mvn spring-boot:run`.
 4. Cuando la consola muestre `Started AuthApplication`, el servicio escucha en `http://localhost:8080`.
 5. Probar con Postman (ver evidencia EV02).
